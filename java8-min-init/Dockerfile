@@ -1,6 +1,7 @@
 # AlpineLinux with a glibc-2.21 and Oracle Java 8
-# Kudos to Nicola Paolucci https://developer.atlassian.com/blog/2015/08/minimal-java-docker-containers/
-
+# Kudos to Nicola Paolucci for the original blog post with the Java 8 Alpine build
+# https://developer.atlassian.com/blog/2015/08/minimal-java-docker-containers/
+# More info on Yelp! dumb-init here: http://engineeringblog.yelp.com/2016/01/dumb-init-an-init-for-docker.html
 FROM alpine:3.3
 MAINTAINER Daniel Bryant daniel.bryant@tai-dev.co.uk 
 
