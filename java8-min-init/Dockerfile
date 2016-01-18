@@ -1,7 +1,6 @@
 # AlpineLinux with a glibc-2.21 and Oracle Java 8
 # Kudos to Nicola Paolucci for the original blog post with the Java 8 Alpine build
 # https://developer.atlassian.com/blog/2015/08/minimal-java-docker-containers/
-# More info on Yelp! dumb-init here: http://engineeringblog.yelp.com/2016/01/dumb-init-an-init-for-docker.html
 FROM alpine:3.3
 MAINTAINER Daniel Bryant daniel.bryant@tai-dev.co.uk 
 
@@ -46,7 +45,9 @@ RUN mkdir /opt && curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie
 ENV JAVA_HOME /opt/jdk
 ENV PATH ${PATH}:${JAVA_HOME}/bin
 
-RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.0.0/dumb-init_1.0.0_amd64
-RUN chmod +x /usr/local/bin/dumb-init
+# Install Yelp!s dumb-init init system for Docker
+# More info on dumb-init here: http://engineeringblog.yelp.com/2016/01/dumb-init-an-init-for-docker.html
+RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.0.0/dumb-init_1.0.0_amd64 && \
+    chmod +x /usr/local/bin/dumb-init
 
 CMD ["dumb-init", "java", "-version"]
